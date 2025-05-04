@@ -20,6 +20,16 @@ module.exports = {
     "!src/**/*.d.ts" // exclude type declaration files
   ],
   coverageDirectory: "coverage",  // output directory for coverage reports
+  
+  // TODO: Once a MVP is done, write more test cases and increase this
+  coverageThreshold: {
+    global: {
+      branches: 0,
+      functions: 0,
+      lines: 0,
+      statements: 0
+    }
+  },
 
   globals: {
     // This is because `next` requires `"jsx": "preserve",` (During build)

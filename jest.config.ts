@@ -12,4 +12,13 @@ module.exports = {
   moduleNameMapper: {
     '\\.(css|less|scss)$': 'identity-obj-proxy',  // Stub out CSS imports
   },
+
+  globals: {
+    // This is because `next` requires `"jsx": "preserve",` (During build)
+    // while Jest requires `"jsx": "preserve",`"jsx": "react"` 
+    // (Plus some more differences between jest and next)
+    'ts-jest': {
+      tsconfig: 'tsconfig.test.json',
+    },
+  },
 };

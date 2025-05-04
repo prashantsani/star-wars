@@ -12,6 +12,14 @@ module.exports = {
   moduleNameMapper: {
     '\\.(css|less|scss)$': 'identity-obj-proxy',  // Stub out CSS imports
   },
+  // Enable coverage collection
+  collectCoverage: true,
+  // Specify which files to include (e.g., all files in the src directory)
+  collectCoverageFrom: [
+    "src/**/*.{ts,tsx}",
+    "!src/**/*.d.ts" // exclude type declaration files
+  ],
+  coverageDirectory: "coverage",  // output directory for coverage reports
 
   globals: {
     // This is because `next` requires `"jsx": "preserve",` (During build)

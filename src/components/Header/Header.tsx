@@ -17,6 +17,7 @@ function Header() {
       width={184.56}
       height={80}
       priority
+      className='logo'
     />
   );
 

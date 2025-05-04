@@ -1,11 +1,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'Characters', href: '/characters' },
-  { name: 'Favorites', href: '/favorites' },
-];
+import navLinks from './navLinks';
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();

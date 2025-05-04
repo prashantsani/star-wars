@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Barlow } from "next/font/google";
-import "./globals.css";
+import "../styles/globals";
 
 const geistSans = Barlow({
   variable: "--font-barlow",

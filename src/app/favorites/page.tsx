@@ -1,7 +1,7 @@
 export default function Favorites() {
   return (
     <div>
-      <h1 className='text-red text-4xl font-bold'>Favorites</h1>
+      <h1 className='page-header'>Favorites</h1>
     </div>
   );
 }

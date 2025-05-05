@@ -1,7 +1,33 @@
-export default function Charecters() {
+import { getCharacters } from '@/lib/api/charecters';
+import { PeopleResponse, CharactersListPageProps } from './types';
+import Link from 'next/link';
+import { getPageNumber } from '@/utils/helper';
+
+export default async function CharactersList({ searchParams }: CharactersListPageProps) {
+
+  const params = await searchParams;
+  const pageStr = params.page ?? '1';
+  const searchStr = params.search ?? '';
+
+  const pageNumber = getPageNumber(pageStr);
+
+  const data: PeopleResponse = await getCharacters(pageNumber, searchStr);
+
   return (
-    <div>
-      <h1 className='text-red text-4xl font-bold'>Characters</h1>
-    </div>
+    <>
+      <h1 className='page-header'>Characters</h1>
+      <ul>
+        {data.results.map((character) => (
+          <li key={character.uid} className="border p-4 mb-4 rounded shadow-sm">
+            <Link
+              href={`/characters/${character.uid}`}
+              className="text-yellow hover:underline"
+            >
+              {character.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }

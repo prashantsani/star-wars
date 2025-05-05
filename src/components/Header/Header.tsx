@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import Navbar from './Navbar';
+import Navbar from '../Navbar/Navbar';
 
 function Header() {
   const pathname = usePathname();

@@ -1,4 +1,4 @@
-import { CharacterDetail } from '@/lib/api/charecters/types';
+import { CharacterDetail } from '@/lib/api/characters/types';
 
 
 export const charecterDetailsLabels: Array<[keyof CharacterDetail["properties"], string]> = [

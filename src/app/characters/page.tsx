@@ -1,4 +1,4 @@
-import { getCharacters } from '@/lib/api/charecters';
+import { getCharacters } from '@/lib/api/characters';
 import { PeopleResponse, CharactersListPageProps } from './types';
 import Link from 'next/link';
 import { getPageNumber } from '@/utils/helper';

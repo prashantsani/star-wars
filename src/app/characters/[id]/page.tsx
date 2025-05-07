@@ -1,9 +1,9 @@
-import { CharacterPageProps } from "./types";
+import { CharactersPageProps } from "./types";
 import { charecterDetailsLabels } from './constants';
-import { getCharacterDetail } from '@/lib/api/charecters';
-import { CharacterDetailResponse } from '@/lib/api/charecters/types';
+import { getCharacterDetail } from '@/lib/api/characters';
+import { CharacterDetailResponse } from '@/lib/api/characters/types';
 
-export default async function CharacterDetailPage({ params }: CharacterPageProps) {
+export default async function CharactersDetailPage({ params }: CharacterPageProps) {
   const { id } =  await params;
 
   const data: CharacterDetailResponse = await getCharacterDetail(id);

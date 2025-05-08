@@ -21,7 +21,6 @@ export const getCharacters = cache(async (page = 1, search?: string): Promise<Ch
   if (!response.ok) {
     throw new Error(`Failed to fetch characters: ${response.status}`);
   }
-  
   return response.json();
 });
 
@@ -34,6 +33,21 @@ export const getCharacterDetail = cache(async (id: string): Promise<CharacterDet
   
   if (!response.ok) {
     throw new Error(`Failed to fetch character ${id}: ${response.status}`);
+  }
+  
+  return response.json();
+});
+
+
+/**
+ * Fetches home planet details for a character.
+ * The result is cached and can only be called by server components.
+ */
+export const getHomePlanet = cache(async (url: string): Promise<CharacterDetailResponse> => {
+  const response = await fetch(url);
+  
+  if (!response.ok) {
+    throw new Error(`Failed to fetch planet ${url}: ${response.status}`);
   }
   
   return response.json();

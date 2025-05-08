@@ -1,13 +1,17 @@
-import { CharactersPageProps } from "./types";
 import { charecterDetailsLabels } from './constants';
-import { getCharacterDetail } from '@/lib/api/characters';
+import { getCharacterDetail, getHomePlanet } from '@/lib/api/characters';
 import { CharacterDetailResponse } from '@/lib/api/characters/types';
 
-export default async function CharactersDetailPage({ params }: CharacterPageProps) {
-  const { id } =  await params;
-
+export default async function CharactersDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  const { id } = await params;
   const data: CharacterDetailResponse = await getCharacterDetail(id);
   const character = data.result.properties;
+  const homePlanet = await getHomePlanet(data.result.properties.homeworld);
+  character["homeworld"] = homePlanet.result.properties.name;
 
   return (
     <>

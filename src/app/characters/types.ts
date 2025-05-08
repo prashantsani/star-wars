@@ -2,7 +2,7 @@
  * Represents a single list Item from People or Character List API
  * (part of response from Character/People API)
  */
-export interface CharacterListItem {
+export interface ResponseCharacterListItem {
   uid: string;
   name: string;
   url: string;
@@ -17,7 +17,7 @@ export interface PeopleResponse {
   total_pages: number;
   previous: string | null;
   next: string | null;
-  results: CharacterListItem[];
+  results: ResponseCharacterListItem[];
 }
 
 /**

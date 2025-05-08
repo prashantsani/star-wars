@@ -6,6 +6,9 @@ export interface CharacterListItem {
   uid: string;
   name: string;
   url: string;
+  gender?: string;
+  homeworld?: string;
+  planetName?: string;
 }
 
 /**

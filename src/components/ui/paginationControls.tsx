@@ -29,8 +29,8 @@ export function PaginationControls({ currentPage, totalPages, search }: Paginati
       <PaginationContent>
         {currentPage > 1 && (
           <PaginationItem>
-            <PaginationPrevious>
-              <a href={createLink(currentPage - 1)}>Previous</a>
+            <PaginationPrevious href={createLink(currentPage - 1)}>
+              Previous
             </PaginationPrevious>
           </PaginationItem>
         )}
@@ -39,8 +39,8 @@ export function PaginationControls({ currentPage, totalPages, search }: Paginati
           const page = i + 1;
           return (
             <PaginationItem key={page}>
-              <PaginationLink isActive={page === currentPage}>
-                <a href={createLink(page)}>{page}</a>
+              <PaginationLink isActive={page === currentPage} href={createLink(page)}>
+                {page}
               </PaginationLink>
             </PaginationItem>
           );
@@ -48,8 +48,8 @@ export function PaginationControls({ currentPage, totalPages, search }: Paginati
 
         {currentPage < totalPages && (
           <PaginationItem>
-            <PaginationNext>
-              <a href={createLink(currentPage + 1)}>Next</a>
+            <PaginationNext href={createLink(currentPage + 1)}>
+              Next
             </PaginationNext>
           </PaginationItem>
         )}

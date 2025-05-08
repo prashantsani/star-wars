@@ -4,6 +4,7 @@ import type { CharactersListPageProps } from './types';
 import type {CharacterListItem } from '@/lib/api/characters/types';
 import Link from 'next/link';
 import { getPageNumber } from '@/utils/helper';
+import { PaginationControls } from '@/components/ui/paginationControls';
 
 /**
  * This page lists characters from the Star Wars API.
@@ -68,10 +69,11 @@ export default async function CharactersList({ searchParams }: CharactersListPag
         ))}
       </ul>
 
-      {/* 
-        Insert your pagination component here if needed.
-        For example, you can link to /characters?page=2 using Next.js Link components.
-      */}
+      <PaginationControls
+        currentPage={pageNumber}
+        totalPages={data.total_pages}
+        search={searchStr}
+      />
     </div>
   );
 }

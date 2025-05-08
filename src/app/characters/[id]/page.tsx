@@ -2,6 +2,17 @@ import { charecterDetailsLabels } from './constants';
 import { getCharacterDetail, getHomePlanet } from '@/lib/api/characters';
 import { CharacterDetailResponse } from '@/lib/api/characters/types';
 
+/*
+* This is a server component that fetches character details from the API
+* and displays them on the page.
+*
+* The component uses async/await to fetch data from the API and render it.
+* It also uses TypeScript for type safety and better developer experience.
+*
+* @param {Object} params - The parameters passed to the component.
+* @param {string} params.id - The ID of the character to fetch.
+* @returns {JSX.Element} The rendered component.
+*/
 export default async function CharactersDetailPage({
   params,
 }: {

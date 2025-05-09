@@ -1,6 +1,7 @@
 import { charecterDetailsLabels } from './constants';
 import { getCharacterDetail, getHomePlanet } from '@/lib/api/characters';
 import { CharacterDetailResponse } from '@/lib/api/characters/types';
+import { FavoriteDetailButton } from '@/app/characters/FavoriteDetailButton';
 
 /*
 * This is a server component that fetches character details from the API
@@ -22,7 +23,8 @@ export default async function CharactersDetailPage({
   const data: CharacterDetailResponse = await getCharacterDetail(id);
   const character = data.result.properties;
   const homePlanet = await getHomePlanet(data.result.properties.homeworld);
-  character["homeworld"] = homePlanet.result.properties.name;
+  const planetName = homePlanet.result.properties.name;
+  character["homeworld"] = planetName;
 
   return (
     <>
@@ -39,6 +41,8 @@ export default async function CharactersDetailPage({
           );
         })}
       </dl>
+      { /* Since uuid = id, we can use id as the key to check if this is already a favorite */}
+      <FavoriteDetailButton uid={id} name={character.name} gender={character.gender} planetName={planetName} />
     </>
   );
 }

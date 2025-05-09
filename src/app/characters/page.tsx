@@ -1,8 +1,8 @@
 import { getCharacters, getCharacterDetail, getHomePlanet } from '@/lib/api/characters';
 import type { CharacterListResponse } from '@/lib/api/characters/types';
 import type { CharactersListPageProps } from './types';
-import type {CharacterListItem } from '@/lib/api/characters/types';
-import Link from 'next/link';
+import type {CharacterListItemFormat } from '@/lib/api/characters/types';
+import { CharacterListItem } from './characterListItemShort';
 import { getPageNumber } from '@/utils/helper';
 import { PaginationControls } from '@/components/ui/paginationControls';
 
@@ -24,7 +24,7 @@ export default async function CharactersList({ searchParams }: CharactersListPag
   const data: CharacterListResponse = await getCharacters(pageNumber, searchStr);
 
   // For each character, fetch detailed info and the homeworld's name.
-  const CharacterListItems: CharacterListItem[] = await Promise.all(
+  const CharacterListItems: CharacterListItemFormat[] = await Promise.all(
     data.results.map(async (character) => {
       // Get detailed character data (this includes gender and homeworld URL).
       // The `getCharacterDetail` function is also cached and can only be called from server components.
@@ -52,20 +52,14 @@ export default async function CharactersList({ searchParams }: CharactersListPag
       <h1 className="page-header text-3xl font-bold mb-6">Characters</h1>
       <ul>
         {CharacterListItems.map((character) => (
-          <li key={character.uid} className="border p-4 mb-4 rounded shadow-sm">
-            <Link
-              href={`/characters/${character.uid}`}
-              className="text-yellow hover:underline"
-            >
-              {character.name}
-            </Link>
-            <div>
-              <span className="font-semibold">Gender:</span> {character.gender}
-            </div>
-            <div>
-              <span className="font-semibold">Home Planet:</span> {character.planetName}
-            </div>
-          </li>
+          <CharacterListItem 
+            key={character.uid}
+            uid={character.uid}
+            name={character.name} 
+            gender={character.gender}
+            planetName={character.planetName}
+            url={character.url} 
+          />
         ))}
       </ul>
 

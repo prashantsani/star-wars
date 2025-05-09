@@ -1,14 +1,13 @@
-// src/lib/api/characters/types.ts
 /**
  * Represents a single character item in the characters list.
  */
-export interface CharacterListItem {
+export interface characterListItemShort {
   uid: string;
   name: string;
-  url: string;
-  gender?: string;
-  homeworld?: string;
-  planetName?: string;
+  url?: string; // TODO: Remove this if not needed
+  gender?: string; // TODO: Make this required not optional
+  homeworld?: string; // TODO: Make this required not optional
+  planetName?: string; // TODO: Make this required not optional
 }
 
 /**
@@ -20,13 +19,15 @@ export interface CharacterListResponse {
   total_pages: number;
   previous: string | null;
   next: string | null;
-  results: CharacterListItem[];
+  results: characterListItemShort[];
 }
 
 /**
  * Represents the detailed properties of a character.
  */
 export interface CharacterProperties {
+  // TODO: extend this interface with the properties characterListItemShort
+  uid: string;
   name: string;
   height: string;
   mass: string;

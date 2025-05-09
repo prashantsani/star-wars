@@ -2,8 +2,8 @@ export interface CharacterSummary {
   uid: string;
   name: string;
   url?: string;
-  gender: string;
-  planetName: string;
+  gender: string | undefined;
+  planetName: string | undefined;
 }
 
 export interface FavoritesContextType {

@@ -2,7 +2,7 @@
 
 import { useFavorites } from '@/context/FavoritesContext';
 
-export function FavoriteDetailButton({ uid, name, className, gender, planetName }: { uid: string; name: string, className?: string, planetName: string, gender: string }) {
+export function FavoriteDetailButton({ uid, name, className, gender, planetName }: { uid: string; name: string, planetName: string | undefined, gender: string | undefined, className?: string }) {
 
   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
   const fav = isFavorite(uid);

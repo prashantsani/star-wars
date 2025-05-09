@@ -1,8 +1,8 @@
 import { getCharacters, getCharacterDetail, getHomePlanet } from '@/lib/api/characters';
 import type { CharacterListResponse } from '@/lib/api/characters/types';
 import type { CharactersListPageProps } from './types';
-import type {CharacterListItemFormat } from '@/lib/api/characters/types';
-import { CharacterListItem } from './characterListItemShort';
+import type {characterListItemShort } from '@/lib/api/characters/types';
+import { CharacterListItemShort } from './characterListItemShort';
 import { getPageNumber } from '@/utils/helper';
 import { PaginationControls } from '@/components/ui/paginationControls';
 
@@ -24,7 +24,7 @@ export default async function CharactersList({ searchParams }: CharactersListPag
   const data: CharacterListResponse = await getCharacters(pageNumber, searchStr);
 
   // For each character, fetch detailed info and the homeworld's name.
-  const CharacterListItems: CharacterListItemFormat[] = await Promise.all(
+  const CharacterListItems: characterListItemShort[] = await Promise.all(
     data.results.map(async (character) => {
       // Get detailed character data (this includes gender and homeworld URL).
       // The `getCharacterDetail` function is also cached and can only be called from server components.
@@ -52,7 +52,7 @@ export default async function CharactersList({ searchParams }: CharactersListPag
       <h1 className="page-header text-3xl font-bold mb-6">Characters</h1>
       <ul>
         {CharacterListItems.map((character) => (
-          <CharacterListItem 
+          <CharacterListItemShort 
             key={character.uid}
             uid={character.uid}
             name={character.name} 

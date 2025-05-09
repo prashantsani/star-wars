@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import type { characterListItemShort } from '@/lib/api/characters/types';
+import { FavoriteDetailButton } from './FavoriteDetailButton';
 
 export function CharacterListItemShort({ uid, name, gender, planetName }: characterListItemShort) {
 
@@ -22,6 +23,7 @@ export function CharacterListItemShort({ uid, name, gender, planetName }: charac
                         <span className="font-semibold">Home Planet:</span> {planetName}
                     </div>
                 </div>
+                <FavoriteDetailButton uid={uid} name={name} gender={gender} planetName={planetName} className='md:float-right self-baseline ' />
             </div>
         </li>
     );

@@ -9,7 +9,6 @@ export default function FavoritesList() {
   if (favorites.length === 0) {
     return (
       <>
-        <h1 className='page-header'>Favorites</h1>
         <p className="text-center py-8">You haven’t added any characters as favorites yet.</p>;
       </>
     )
@@ -17,7 +16,6 @@ export default function FavoritesList() {
 
   return (
     <>
-      <h1 className='page-header'>Favorites</h1>
       <ul>
         {favorites.map(({ uid, name, gender, planetName }) => (
           <CharacterListItemShort 
